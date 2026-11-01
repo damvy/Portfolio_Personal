@@ -1,12 +1,13 @@
-
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - Đàm Triệu Vỹ</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header class="navbar">
         <div class="container nav-content">
@@ -134,9 +135,7 @@
                 <p>Email: damvy2006@gmail.com</p>
                 <p>
                     GitHub:
-                    <a href="https://github.com/damvy"
-                       target="_blank"
-                       rel="noopener noreferrer">
+                    <a href="https://github.com/damvy" target="_blank" rel="noopener noreferrer">
                         github.com/damvy
                     </a>
                 </p>
@@ -148,5 +147,123 @@
     <footer class="footer">
         <p>© 2026 Đàm Triệu Vỹ - Personal Portfolio</p>
     </footer>
+
+    <!-- PHẦN BÀI TẬP JAVASCRIPT -->
+    <section id="bai-tap" style="padding: 40px; background: #fdfdfd; border-top: 1px solid #eee;">
+        <div class="container" style="max-width: 900px; margin: 0 auto;">
+            <h2 style="color: var(--primary-color); margin-bottom: 20px; text-align: center;">Bài tập JavaScript</h2>
+
+            <!-- Bài 1: Cung hoàng đạo & Can Chi -->
+            <div
+                style="background: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                <h3>1. Tra cứu Cung Hoàng Đạo & Can Chi</h3>
+                <p style="font-size: 14px; color: #666;">Nhập ngày tháng năm sinh của bạn:</p>
+                <input type="date" id="txtNgaySinh" style="padding: 6px; margin-right: 10px;">
+                <button onclick="traCuu()" style="padding: 6px 12px; cursor: pointer;">Tra cứu</button>
+                <p id="lblKetQuaCanChi" style="margin-top: 10px; font-weight: bold; color: #333;"></p>
+                <div id="khungHinhAnh" class="khung-hinh-anh"
+                    style="display: none; gap: 30px; flex-wrap: wrap; margin-top: 20px;">
+                    <div style="text-align: center;">
+                        <h3>Con giáp</h3>
+                        <img id="hinhConGiap" src="images/tuat.jpg" alt="Con giáp Tuất" width="150">
+                    </div>
+
+                    <div style="text-align: center;">
+                        <h3>Cung hoàng đạo</h3>
+                        <img id="hinhCung" src="images/su-tu.jpg" alt="Cung Sư Tử" width="150">
+                    </div>
+
+                </div>
+
+                <!-- Bài 2: Random User -->
+                <div
+                    style="background: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                    <h3>2. Danh bạ người dùng ngẫu nhiên</h3>
+                    <button onclick="layUser()" style="padding: 6px 12px; cursor: pointer; margin-bottom: 10px;">Lấy 10
+                        người dùng</button>
+                    <div id="khungUser" style="display: flex; flex-wrap: wrap; gap: 10px;"></div>
+                </div>
+
+
+                <!-- Bài 3: Đăng ký thông tin cư trú -->
+                <div class="form-cu-tru">
+                    <h3>3. Đăng ký thông tin cư trú</h3>
+
+                    <form id="formCuTru">
+                        <div class="form-group">
+                            <label for="txtHoTen">Họ và tên:</label>
+                            <input type="text" id="txtHoTen" placeholder="Nhập họ và tên" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txtNgaySinh">Ngày sinh:</label>
+                            <input type="date" id="txtNgaySinh" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Giới tính:</label>
+                            <select id="selGioiTinh" required>
+                                <option value="">-- Chọn giới tính --</option>
+                                <option value="Nam">Nam</option>
+                                <option value="Nữ">Nữ</option>
+                                <option value="Khác">Khác</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txtCCCD">Số CCCD:</label>
+                            <input type="text" id="txtCCCD" placeholder="Nhập số CCCD" pattern="[0-9]{12}"
+                                maxlength="12" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txtSDT">Số điện thoại:</label>
+                            <input type="tel" id="txtSDT" placeholder="Nhập số điện thoại" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txtEmail">Email:</label>
+                            <input type="email" id="txtEmail" placeholder="Nhập email">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txtDiaChi">Địa chỉ chi tiết:</label>
+                            <input type="text" id="txtDiaChi" placeholder="Số nhà, đường..." required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="selTinh">Tỉnh/Thành phố:</label>
+                            <select id="selTinh" onchange="layXaPhuong()" required>
+                                <option value="">-- Chọn Tỉnh/Thành phố --</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="selXa">Xã/Phường:</label>
+                            <select id="selXa" required>
+                                <option value="">-- Chọn Xã/Phường --</option>
+                            </select>
+                        </div>
+
+                        <button type="submit">Đăng ký cư trú</button>
+                    </form>
+
+                    <div id="ketQuaCuTru"></div>
+                </div>
+
+                <!-- Bài 4: Thời tiết -->
+                <div
+                    style="background: white; padding: 20px; border-radius: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                    <h3>4. Ứng dụng Thời tiết thu nhỏ</h3>
+                    <input type="text" id="txtThanhPho" placeholder="Nhập tên thành phố..."
+                        style="padding: 6px; margin-right: 10px;">
+                    <button onclick="xemThoiTiet()" style="padding: 6px 12px; cursor: pointer;">Xem thời tiết</button>
+                    <div id="ketQuaThoiTiet" style="margin-top: 10px;"></div>
+                </div>
+            </div>
+    </section>
+
+    <script src="script.js"></script>
 </body>
+
 </html>
